@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap');
+
+:root {
+  /* --- CORES DA MARCA (AZUIS) --- */
+  --primary-100: #e3efff;       /* Fundo de alertas, badges ou detalhes sutis */
+  --primary-300: #7cb4ff;       /* Bordas focadas ou elementos secundários */
+  --primary-500: #2887ff;       /* Sua cor principal (CTA primário, links) */
+  --primary-600: #2476da;       /* Seu tom dark (Hover de botões primários) */
+  --primary-700: #1a56a3;       /* Azul profundo para destaques ou ícones */
+
+  /* --- CORES DE TEXTO --- */
+  --text-main: #0f172a;         /* Azul-escuro quase preto (Títulos principais) */
+  --text-muted: #475569;        /* Cinza azulado (Textos de parágrafos/descrições) */
+  --text-light: #94a3b8;        /* Cinza claro (Textos secundários ou placeholders) */
+  --text-white: #ffffff;        /* Texto claro sobre fundos escuros */
+
+  /* --- FUNDOS (BACKGROUNDS) & SUPERFÍCIES --- */
+  --bg-main: #f8fafc;           /* O Off-White moderno (Tom levemente azulado/frio) */
+  --bg-surface: #ffffff;        /* Branco puro para cards que flutuam sobre o off-white */
+  --bg-section-dark: #0f172a;   /* Azul escuro para o rodapé (Footer) ou seção Hero */
+  --bg-extra-light: #f1f5f9;    /* Para inputs de formulário ou divisores cinzas */
+
+  /* --- STATUS (OPCIONAL MAS ÚTIL) --- */
+  --status-success: #10b981;    /* Verde para mensagens de sucesso no envio do formulário */
+
+  /* --- ESTRUTURA & DESIGN SYSTEM --- */
+  --max-width: 1200px;          /* Limite de largura do site */
+  --border-radius-sm: 4px;      /* Cantos de inputs e badges */
+  --border-radius-md: 8px;      /* Cantos de botões e pequenos cards */
+  --border-radius-lg: 16px;     /* Cantos de cards grandes ou banners */
+  
+  /* --- TRANSIÇÕES --- */
+  --transition-fast: all 0.2s ease-in-out; /* Padrão para hovers de botões */
+
+  --nav-height: 70px; /* Altura estimada do nav para evitar que o conteúdo suma sob ele */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    scroll-behavior: smooth;
+    background-color: var(--bg-main); /* Garante que o fundo off-white seja aplicado globalmente */
+    color: var(--text-muted); /* Define a cor padrão para textos normais */
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+    min-height: 100vh;
+}
+
+/* --- ESTRUTURA GERAL --- */
+.section__container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
+}
+
+.section__header {
+    margin-bottom: 0.5rem; /* Mudado para rem para manter consistência */
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: center;
+    line-height: 1.2; /* Evita que títulos longos fiquem colados nas linhas */
+}
+
+.section__description {
+    max-width: 600px;
+    margin-inline: auto;
+    font-size: 1rem;
+    line-height: 1.6; /* Melhora a legibilidade do texto do parágrafo */
+    color: var(--text-muted); /* Mudado para text-muted para garantir contraste de acessibilidade */
+    text-align: center;
+}
+
+/* --- COMPONENTES --- */
+.btn {
+    display: inline-block; /* Garante que padding e margens funcionem corretamente */
+    padding: 0.75rem 1.5rem;
+    outline: none;
+    border: none;
+    font-family: inherit; /* Herda a fonte 'Outfit' do body automaticamente */
+    font-size: 1rem;
+    font-weight: 600; /* Texto levemente mais grosso para destacar o CTA */
+    white-space: nowrap;
+    color: var(--text-white); /* Invertido: texto branco no botão primário azul */
+    background-color: var(--primary-500); /* Fundo azul por padrão */
+    border-radius: 5rem;
+    transition: var(--transition-fast, 0.2s ease-in-out);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--primary-600);
+    color: var(--text-white);
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.02em; /* Deixa logos modernos mais elegantes */
+}
+
+img {
+    display: block; /* Corrigido de flex para block */
+    max-width: 100%; /* Garante que a imagem não transborde */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Herda a cor do elemento pai por padrão */
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- NAVEGAÇÃO --- */
+nav {
+    position: fixed;
+    isolation: isolate;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05); /* Sombra sutil para separar o nav do conteúdo */
+}
+
+.nav__header {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-surface);
+}
+
+.nav__logo .logo {
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.nav__menu__btn {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+.nav__links {
+    position: absolute;
+    top: 100%; /* Faz o menu nascer exatamente abaixo do cabeçalho */
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--bg-surface);
+    
+    /* --- AS DUAS CORREÇÕES AQUI --- */
+    transform: translateY(-150%); /* Esconde o menu totalmente para cima */
+    transition: transform 0.5s ease-in-out; /* Corrigido de 'trasform' para 'transform' */
+    z-index: 5; /* Mudado de -1 para 5 para o menu ficar NA FRENTE do conteúdo do site */
+}
+
+/* Mantém essa classe exatamente assim para o JS funcionar */
+.nav__links.open {
+    transform: translateY(0); /* Faz o menu descer dinamicamente */
+}
+
+.nav__links a {
+    font-weight: 600;
+    color: var(--text-main);
+    white-space: nowrap;
+}
+
+.nav__links a:hover {
+    color: var(--text-muted);
+}
+
+
+.nav__btns {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    nav {
+        position: fixed;
+        top: 0; /* Garante o alinhamento no topo da tela */
+        left: 50%; /* Próximas duas linhas centralizam um elemento fixed com max-width */
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: var(--max-width);
+        margin-inline: auto;
+        padding: 1.25rem 1rem; /* Padding vertical ajustado para melhor balanço visual */
+        background-color: rgba(255, 255, 255, 0.85); /* Fundo branco semi-transparente */
+        backdrop-filter: blur(12px); /* Efeito "Glassmorphism" super moderno e clean */
+        box-shadow: 0 4px 20px rgba(40, 135, 255, 0.06); /* Sombra suave com leve tom azul da marca */
+        z-index: 100; /* Garante que o menu flutue por cima do conteúdo */
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        border-radius: 0 0 1rem 1rem; /* Leve arredondamento na base do menu para ficar premium */
+    }
+
+    .nav__header {
+        flex: 1;
+        padding: 0;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav__logo .logo {
+        color: var(--text-main);
+        font-weight: 800;
+        letter-spacing: -0.02em; /* Toque estético moderno para marcas */
+    }
+
+    /* Ajustado para bater com seu HTML atual (que usa dois underlines) */
+    .nav__menu__btn {
+        display: none;
+    }
+
+    .nav__links {
+        position: static;
+        flex: 1; /* Ocupa o espaço central de forma simétrica */
+        display: flex; /* Ativa flex para alinhar os itens horizontalmente */
+        justify-content: center; /* Centraliza geometricamente a lista de links na tela */
+        gap: 2.5rem; /* Espaçamento ideal entre os links no desktop */
+        width: fit-content;
+        padding: 0;
+        flex-direction: row;
+        background-color: transparent;
+        transform: none !important;
+    }
+
+    .nav__links a {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-muted); /* Cinza azulado suave por padrão */
+        letter-spacing: 0.03em;
+        transition: var(--transition-fast, 0.2s ease-in-out);
+    }
+
+    .nav__links a:hover {
+        color: var(--primary-500); /* Realça com o azul da marca no hover */
+    }
+
+    .nav__links li:last-child {
+        display: none;
+    }
+
+    .nav__btns {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .nav__btns button {
+        padding: 0.75rem 2rem;
+        background-color: var(--primary-500);
+        color: var(--text-white); /* Garante leitura correta sobre o azul */
+        font-weight: 600;
+        border-radius: 5rem;
+        box-shadow: 0 4px 14px rgba(40, 135, 255, 0.25); /* Sombra brilhante no botão principal */
+        transition: var(--transition-fast, 0.2s ease-in-out);
+    }
+
+    .nav__btns button:hover {
+        background-color: var(--primary-600);
+        transform: translateY(-1px); /* Micro-interação premium ao passar o mouse */
+        box-shadow: 0 6px 20px rgba(40, 135, 255, 0.35);
+    }
+}
