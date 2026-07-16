@@ -31,22 +31,275 @@
     </nav>
 
     <header id="home">
+        <div class="header__airflow" aria-hidden="true">
+            <span class="airflow airflow--one"></span>
+            <span class="airflow airflow--two"></span>
+        </div>
         <div class="header__container">
-            <div class="header__content">
-                <p>Bem-vindo à GS ClimaTech</p>
-                <h1>Soluções em Climatização</h1>
+            <div class="header__content fade-in-up">
+                <p class="header__eyebrow">Bem-vindo à GS ClimaTech</p>
+                <h1>Ar puro, temperatura certa, o ano inteiro</h1>
+                <p class="header__lead">Projetos, instalação e manutenção de climatização premium para residências e empresas que não abrem mão de conforto e eficiência.</p>
                 <div class="header__btns">
                     <button class="btn">SOLICITAR ORÇAMENTO</button>
-                    <a href="#">
+                    <a href="#" class="header__play" aria-label="Assistir vídeo institucional">
                         <span><i class="fa-solid fa-play"></i></span>
                     </a>
                 </div>
+                <div class="header__stats">
+                    <div class="header__stat">
+                        <span class="header__stat-number">12+</span>
+                        <span class="header__stat-label">anos de mercado</span>
+                    </div>
+                    <div class="header__stat">
+                        <span class="header__stat-number">500+</span>
+                        <span class="header__stat-label">instalações entregues</span>
+                    </div>
+                    <div class="header__stat">
+                        <span class="header__stat-number">4.9<i class="fa-solid fa-star"></i></span>
+                        <span class="header__stat-label">avaliação média</span>
+                    </div>
+                </div>
             </div>
-            <div class="header__image">
-                <img src="src/images/header.JPEG" alt="Imagem de Climatização">
+            <div class="header__image fade-in-up">
+                <div class="header__image-frame">
+                    <img src="src/images/header.JPEG" alt="Ambiente climatizado com ar-condicionado GS ClimaTech">
+                </div>
+                <div class="header__badge">
+                    <i class="fa-solid fa-temperature-low"></i>
+                    <div>
+                        <span class="header__badge-title">Climatização inteligente</span>
+                        <span class="header__badge-text">Conforto sob controle</span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
+
+    <!-- ============ SOBRE NÓS ============ -->
+    <section id="about" class="section__container about">
+        <div class="about__grid">
+            <div class="about__content fade-in-up">
+                <span class="section__eyebrow">Sobre nós</span>
+                <h2 class="section__header about__header">Climatização pensada para durar, não só para resfriar</h2>
+                <p class="section__description about__description">Há mais de uma década a GS ClimaTech projeta e instala sistemas de climatização que unem engenharia precisa e acabamento premium. Cuidamos de cada detalhe, do dimensionamento correto do equipamento à limpeza final da obra, para que o único trabalho que sobre para você seja aproveitar o ambiente.</p>
+
+                <div class="about__pillars">
+                    <div class="pillar fade-in-up">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h3>Tecnologia</h3>
+                        <p>Equipamentos de última geração e projetos calculados sob medida para cada ambiente.</p>
+                    </div>
+                    <div class="pillar fade-in-up">
+                        <i class="fa-solid fa-clock"></i>
+                        <h3>Pontualidade</h3>
+                        <p>Cronograma claro, prazos cumpridos e comunicação direta em cada etapa do serviço.</p>
+                    </div>
+                    <div class="pillar fade-in-up">
+                        <i class="fa-solid fa-broom"></i>
+                        <h3>Limpeza</h3>
+                        <p>Obra protegida e ambiente entregue impecável, sem resíduos ou retrabalho.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about__visual fade-in-up">
+                <div class="about__glass-panel" aria-hidden="true"></div>
+                <div class="about__card">
+                    <span class="about__stat">98%</span>
+                    <span class="about__stat-label">de clientes satisfeitos</span>
+                </div>
+                <div class="about__card about__card--secondary">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span class="about__stat-label">Garantia estendida em todas as instalações</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SERVIÇOS ============ -->
+    <section id="service" class="section__container service">
+        <span class="section__eyebrow section__eyebrow--center">Nossos serviços</span>
+        <h2 class="section__header">Cuidado completo, do projeto à manutenção</h2>
+        <p class="section__description">Soluções sob medida para cada etapa da vida útil do seu sistema de climatização, com equipe técnica certificada.</p>
+
+        <div class="service__grid">
+            <div class="service__card fade-in-up">
+                <div class="service__icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <h3>Instalação</h3>
+                <p>Projeto e instalação completa de sistemas split, multi-split e VRF, residenciais e comerciais.</p>
+            </div>
+            <div class="service__card fade-in-up">
+                <div class="service__icon"><i class="fa-solid fa-gears"></i></div>
+                <h3>Manutenção Preventiva</h3>
+                <p>Planos periódicos que evitam falhas, reduzem consumo de energia e prolongam a vida do equipamento.</p>
+            </div>
+            <div class="service__card fade-in-up">
+                <div class="service__icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+                <h3>Higienização Química</h3>
+                <p>Limpeza profunda que elimina fungos e bactérias, garantindo ar mais saudável no ambiente.</p>
+            </div>
+            <div class="service__card fade-in-up">
+                <div class="service__icon"><i class="fa-solid fa-building"></i></div>
+                <h3>Infraestrutura</h3>
+                <p>Dutos, tubulações e infraestrutura elétrica dimensionados para grandes projetos comerciais.</p>
+            </div>
+        </div>
+
+        <div class="service__brands fade-in-up">
+            <p class="service__brands-label">Trabalhamos com as principais marcas do mercado</p>
+            <div class="brands__carousel">
+                <div class="brands__track">
+                    <span class="brand__chip"><i class="fa-solid fa-snowflake"></i> Daikin</span>
+                    <span class="brand__chip"><i class="fa-solid fa-snowflake"></i> LG</span>
+                    <span class="brand__chip"><i class="fa-solid fa-snowflake"></i> Samsung</span>
+                    <span class="brand__chip"><i class="fa-solid fa-snowflake"></i> Midea</span>
+                    <span class="brand__chip"><i class="fa-solid fa-snowflake"></i> Gree</span>
+                    <span class="brand__chip"><i class="fa-solid fa-snowflake"></i> Fujitsu</span>
+                    <span class="brand__chip"><i class="fa-solid fa-snowflake"></i> Carrier</span>
+                    <span class="brand__chip"><i class="fa-solid fa-snowflake"></i> Springer</span>
+                    <!-- duplicado para o loop contínuo -->
+                    <span class="brand__chip" aria-hidden="true"><i class="fa-solid fa-snowflake"></i> Daikin</span>
+                    <span class="brand__chip" aria-hidden="true"><i class="fa-solid fa-snowflake"></i> LG</span>
+                    <span class="brand__chip" aria-hidden="true"><i class="fa-solid fa-snowflake"></i> Samsung</span>
+                    <span class="brand__chip" aria-hidden="true"><i class="fa-solid fa-snowflake"></i> Midea</span>
+                    <span class="brand__chip" aria-hidden="true"><i class="fa-solid fa-snowflake"></i> Gree</span>
+                    <span class="brand__chip" aria-hidden="true"><i class="fa-solid fa-snowflake"></i> Fujitsu</span>
+                    <span class="brand__chip" aria-hidden="true"><i class="fa-solid fa-snowflake"></i> Carrier</span>
+                    <span class="brand__chip" aria-hidden="true"><i class="fa-solid fa-snowflake"></i> Springer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GALERIA ============ -->
+    <section id="galery" class="section__container galery">
+        <span class="section__eyebrow section__eyebrow--center">Galeria</span>
+        <h2 class="section__header">Projetos entregues com o padrão GS</h2>
+        <p class="section__description">Uma amostra de ambientes residenciais e comerciais climatizados pela nossa equipe.</p>
+
+        <div class="galery__grid">
+            <div class="galery__item galery__item--large fade-in-up">
+                <i class="fa-solid fa-couch"></i>
+                <span>Sala Integrada · Residencial</span>
+            </div>
+            <div class="galery__item fade-in-up">
+                <i class="fa-solid fa-building-user"></i>
+                <span>Escritório Corporativo</span>
+            </div>
+            <div class="galery__item fade-in-up">
+                <i class="fa-solid fa-bed"></i>
+                <span>Suíte Master</span>
+            </div>
+            <div class="galery__item fade-in-up">
+                <i class="fa-solid fa-store"></i>
+                <span>Loja Comercial</span>
+            </div>
+            <div class="galery__item galery__item--large fade-in-up">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Restaurante · Salão Principal</span>
+            </div>
+            <div class="galery__item fade-in-up">
+                <i class="fa-solid fa-dumbbell"></i>
+                <span>Academia</span>
+            </div>
+        </div>
+        <p class="galery__note">* Imagens ilustrativas — substitua pelos registros reais dos projetos em <code>src/images/galery/</code>.</p>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section id="contact" class="section__container contact">
+        <span class="section__eyebrow section__eyebrow--center">Contato</span>
+        <h2 class="section__header">Vamos climatizar o seu ambiente?</h2>
+        <p class="section__description">Preencha o formulário ou fale direto com a nossa equipe. Retornamos em até 1 dia útil.</p>
+
+        <div class="contact__grid">
+            <form class="contact__form fade-in-up" id="contact-form" novalidate>
+                <div class="form__field">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form__field">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form__field">
+                    <label for="phone">Telefone / WhatsApp</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                </div>
+                <div class="form__field">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Conte um pouco sobre o seu projeto"></textarea>
+                </div>
+                <button type="submit" class="btn contact__submit">SOLICITAR ORÇAMENTO</button>
+                <p class="form__success" id="form-success" role="status">Mensagem enviada! Em breve nossa equipe entra em contato.</p>
+            </form>
+
+            <div class="contact__info fade-in-up">
+                <div class="contact__info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <span class="contact__info-title">E-mail</span>
+                        <span class="contact__info-text">contato@gsclimatech.com.br</span>
+                    </div>
+                </div>
+                <div class="contact__info-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <div>
+                        <span class="contact__info-title">WhatsApp</span>
+                        <span class="contact__info-text">(11) 99999-9999</span>
+                    </div>
+                </div>
+                <div class="contact__info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <span class="contact__info-title">Horário de atendimento</span>
+                        <span class="contact__info-text">Seg. a Sex., 8h às 18h</span>
+                    </div>
+                </div>
+                <div class="contact__info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <span class="contact__info-title">Região de atendimento</span>
+                        <span class="contact__info-text">São Paulo e Grande São Paulo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__brand">
+                <a href="#" class="logo footer__logo">GS ClimaTech</a>
+                <p>Climatização premium para ambientes residenciais e comerciais.</p>
+            </div>
+
+            <div class="footer__links">
+                <span class="footer__heading">Navegação</span>
+                <a href="#home">Home</a>
+                <a href="#about">Sobre nós</a>
+                <a href="#service">Serviços</a>
+                <a href="#galery">Galeria</a>
+                <a href="#contact">Contato</a>
+            </div>
+
+            <div class="footer__contact">
+                <span class="footer__heading">Contato</span>
+                <a href="mailto:contato@gsclimatech.com.br"><i class="fa-solid fa-envelope"></i> contato@gsclimatech.com.br</a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i> (11) 99999-9999</a>
+                <div class="footer__socials">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 GS ClimaTech. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script src="src/js/script.js"></script>
 </body>

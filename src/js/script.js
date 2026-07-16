@@ -36,3 +36,58 @@ navLinks.addEventListener("click", (e) => {
         }
     }
 });
+
+// ============================================================
+// SCROLL REVEAL — anima os elementos .fade-in-up ao entrarem
+// na viewport. Respeita prefers-reduced-motion.
+// ============================================================
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealTargets = document.querySelectorAll(".fade-in-up");
+
+if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    // Sem observer disponível (ou o usuário prefere menos animação):
+    // mostra tudo imediatamente.
+    revealTargets.forEach((el) => el.classList.add("is-visible"));
+} else {
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    revealTargets.forEach((el) => revealObserver.observe(el));
+}
+
+// ============================================================
+// FORMULÁRIO DE CONTATO — validação simples e feedback de envio.
+// Sem backend conectado ainda: apenas simula o envio.
+// Ver PROXIMOS-PASSOS.md para instruções de integração real.
+// ============================================================
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+    const formSuccess = document.getElementById("form-success");
+
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+        }
+
+        // TODO: substituir por chamada real (fetch para API/CRM, EmailJS, etc.)
+        formSuccess.classList.add("is-visible");
+        contactForm.reset();
+
+        setTimeout(() => {
+            formSuccess.classList.remove("is-visible");
+        }, 6000);
+    });
+}
