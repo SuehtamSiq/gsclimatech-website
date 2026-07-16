@@ -736,12 +736,18 @@ header::before {
     margin-top: 3rem;
     display: grid;
     gap: 1.25rem;
-    grid-template-columns: repeat(2, 1fr);
+    /* Mobile: 1 coluna. Com 2 colunas + itens "grandes" (span 2)
+       intercalados, o algoritmo de auto-placement do grid pulava
+       células ao não conseguir encaixar o item grande na coluna
+       restante, deixando "Loja Comercial" e "Academia" sozinhos
+       na linha com um vão vazio ao lado. Uma única coluna elimina
+       esse problema por completo em telas pequenas. */
+    grid-template-columns: 1fr;
 }
 
 .galery__item {
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 10;
     border-radius: var(--border-radius-lg);
     background: linear-gradient(155deg, var(--primary-500), var(--primary-700));
     display: flex;
@@ -771,8 +777,10 @@ header::before {
 }
 
 .galery__item--large {
-    grid-column: span 2;
-    aspect-ratio: 2 / 1;
+    /* Em 1 coluna não há o que "espalhar" — grid-column: span 2 só
+       volta a valer a partir do breakpoint desktop, lá embaixo. */
+    grid-column: auto;
+    aspect-ratio: 16 / 10;
 }
 
 .galery__note {
@@ -1018,8 +1026,13 @@ header::before {
         grid-template-columns: repeat(4, 1fr);
     }
 
+    .galery__item {
+        aspect-ratio: 1 / 1;
+    }
+
     .galery__item--large {
         grid-column: span 2;
+        aspect-ratio: 2 / 1;
     }
 
     .contact__grid {
