@@ -193,6 +193,29 @@ nav {
     display: none;
 }
 
+header{
+    margin-top: 5rem;
+    padding-inline: 1rem;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+header::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: calc(100% - 2rem);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: var(--border-radius-lg);
+    z-index: -1;
+}
+
 @media (min-width: 769px) {
     nav {
         position: fixed;
