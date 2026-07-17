@@ -24,9 +24,13 @@ Todo o CSS novo foi anexado ao final do seu `style.css`, comentado por seção, 
 ## O que ainda falta
 
 1. **Imagens reais** — a galeria e a foto do header usam placeholders. Troque `src/images/header.JPEG` pela foto definitiva e adicione as fotos de projetos em `src/images/galery/`, atualizando os `div.galery__item` para `<img>`.
+
 2. **Envio do formulário** — o formulário hoje só simula o envio (não há backend). Veja a seção abaixo para integrar de verdade.
+
 3. **Logos reais das marcas parceiras** — troquei por chips de texto para evitar usar logotipos de terceiros sem autorização; se vocês tiverem os logos oficiais com permissão de uso, substitua `.brand__chip` por `<img>`.
+
 4. **SEO básico** — faltam meta description, Open Graph e um favicon.
+
 5. **Conteúdo definitivo** — os textos que escrevi são um ponto de partida; vale revisar com o time de marketing (preços, diferenciais reais, região de atendimento exata).
 
 ## Próximos passos sugeridos
