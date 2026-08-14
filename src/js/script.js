@@ -65,19 +65,26 @@ if (prefersReducedMotion || !("IntersectionObserver" in window)) {
 }
 
 // ============================================================
-// FORMULÁRIO DE CONTATO — envia o e-mail automaticamente via
-// EmailJS (sem precisar de servidor/backend próprio).
+// FORMULÁRIO DE CONTATO — prioridade WhatsApp, com e-mail (EmailJS)
+// disparado em paralelo como reforço.
 //
-// COMO ATIVAR (leva ~5 minutos):
-// 1. Crie uma conta grátis em https://www.emailjs.com
-// 2. Em "Email Services", conecte o e-mail da empresa (Gmail, Outlook etc.)
-//    e copie o SERVICE_ID gerado.
-// 3. Em "Email Templates", crie um template usando as variáveis
-//    {{name}}, {{email}}, {{phone}} e {{message}} (mesmos "name"
-//    dos campos do formulário no index.html) e copie o TEMPLATE_ID.
-// 4. Em "Account" > "General", copie sua Public Key.
-// 5. Troque os três valores abaixo (SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY).
+// IMPORTANTE: sem um backend/WhatsApp Business API, não existe como
+// o site enviar a mensagem sozinho e "silenciosamente" pro WhatsApp.
+// O que fazemos aqui é abrir uma conversa já com o texto pronto
+// (via link wa.me) — a pessoa só precisa apertar "Enviar" lá dentro.
+// Isso funciona tanto no WhatsApp Web (desktop) quanto no app (celular).
+//
+// COMO ATIVAR O WHATSAPP (1 minuto):
+// 1. Troque o valor de WHATSAPP_NUMBER abaixo pelo número da empresa,
+//    no formato internacional, SÓ números (sem +, espaço, traço ou parênteses):
+//    55 (Brasil) + DDD + número. Ex.: "5511987654321"
+//
+// O e-mail automático via EmailJS continua funcionando como estava
+// (veja as instruções logo abaixo) — ele dispara em paralelo, sem
+// travar a abertura do WhatsApp.
 // ============================================================
+const WHATSAPP_NUMBER = "5511937441209"; // ex.: "5511987654321"
+
 const EMAILJS_SERVICE_ID = "SEU_SERVICE_ID";
 const EMAILJS_TEMPLATE_ID = "SEU_TEMPLATE_ID";
 const EMAILJS_PUBLIC_KEY = "SUA_PUBLIC_KEY";
@@ -90,7 +97,6 @@ const contactForm = document.getElementById("contact-form");
 
 if (contactForm) {
     const formSuccess = document.getElementById("form-success");
-    const submitBtn = contactForm.querySelector(".contact__submit");
 
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -100,37 +106,47 @@ if (contactForm) {
             return;
         }
 
-        // Enquanto as chaves acima não forem preenchidas, o formulário
-        // só simula o envio (não sai nenhum e-mail de verdade).
-        if (!window.emailjs || EMAILJS_PUBLIC_KEY === "SUA_PUBLIC_KEY") {
-            console.warn("EmailJS não configurado ainda — veja as instruções no topo deste bloco em script.js.");
-            showSuccess();
-            contactForm.reset();
-            return;
+        const data = new FormData(contactForm);
+        const name = (data.get("name") || "").toString().trim();
+        const email = (data.get("email") || "").toString().trim();
+        const phone = (data.get("phone") || "").toString().trim();
+        const message = (data.get("message") || "").toString().trim() || "Sem mensagem adicional.";
+
+        // 1) WHATSAPP — prioridade. Precisa ser disparado de forma síncrona,
+        // logo no clique, senão o navegador pode bloquear a abertura da aba.
+        if (WHATSAPP_NUMBER !== "SEU_NUMERO_WHATSAPP") {
+            const whatsappUrl = buildWhatsAppUrl({ name, email, phone, message });
+            window.open(whatsappUrl, "_blank", "noopener");
+        } else {
+            console.warn("WhatsApp não configurado ainda — defina WHATSAPP_NUMBER no topo deste bloco em script.js.");
         }
 
-        const originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = "ENVIANDO...";
+        // 2) E-MAIL — reforço em paralelo, não bloqueia o passo acima.
+        if (window.emailjs && EMAILJS_PUBLIC_KEY !== "SUA_PUBLIC_KEY") {
+            emailjs
+                .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm)
+                .catch((error) => console.error("Erro ao enviar e-mail de reforço:", error));
+        }
 
-        emailjs
-            .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm)
-            .then(() => {
-                showSuccess();
-                contactForm.reset();
-            })
-            .catch((error) => {
-                console.error("Erro ao enviar o formulário:", error);
-                alert("Não foi possível enviar sua mensagem agora. Tente novamente ou fale pelo WhatsApp.");
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            });
+        showSuccess();
+        contactForm.reset();
     });
 
     function showSuccess() {
         formSuccess.classList.add("is-visible");
         setTimeout(() => formSuccess.classList.remove("is-visible"), 6000);
+    }
+
+    function buildWhatsAppUrl({ name, email, phone, message }) {
+        const lines = [
+            "Olá! Vim pelo site da GS ClimaTech e gostaria de um orçamento.",
+            "",
+            `Nome: ${name}`,
+            `E-mail: ${email}`,
+            `Telefone: ${phone}`,
+            `Mensagem: ${message}`,
+        ];
+        const text = encodeURIComponent(lines.join("\n"));
+        return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
     }
 }
