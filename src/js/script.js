@@ -150,3 +150,18 @@ if (contactForm) {
         return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
     }
 }
+
+// ============================================================
+// AMBIENTE — troca automática entre Supabase de dev e de
+// produção, com base no domínio onde o site está rodando.
+//
+// COMO CONFIGURAR: troque PROD_HOSTNAMES pelo(s) domínio(s)
+// reais de produção. Qualquer outro domínio (preview do
+// Vercel, localhost, etc.) cai automaticamente no ambiente dev.
+// ============================================================
+const PROD_HOSTNAMES = ["gsclimatech.com.br"]; // domínio de produção
+
+const isProd = PROD_HOSTNAMES.includes(window.location.hostname);
+
+const SUPABASE_URL = isProd ? "URL_DO_PROJETO_PRODUCAO" : "URL_DO_PROJETO_DEV";
+const SUPABASE_ANON_KEY = isProd ? "ANON_KEY_PRODUCAO" : "ANON_KEY_DEV";
