@@ -155,13 +155,18 @@ if (contactForm) {
 // AMBIENTE — troca automática entre Supabase de dev e de
 // produção, com base no domínio onde o site está rodando.
 //
-// COMO CONFIGURAR: troque PROD_HOSTNAMES pelo(s) domínio(s)
-// reais de produção. Qualquer outro domínio (preview do
-// Vercel, localhost, etc.) cai automaticamente no ambiente dev.
+// COMO CONFIGURAR:
+// Cole a Project URL e a chave publishable/anon de cada projeto
+// (Settings > API Keys no Supabase). NUNCA cole a chave secret/
+// service_role aqui.
 // ============================================================
-const PROD_HOSTNAMES = ["gsclimatech.com.br"]; // domínio de produção
-
+const PROD_HOSTNAMES = ["gsclimatech-website.vercel.app"]; // domínio de produção
 const isProd = PROD_HOSTNAMES.includes(window.location.hostname);
 
-const SUPABASE_URL = isProd ? "URL_DO_PROJETO_PRODUCAO" : "URL_DO_PROJETO_DEV";
-const SUPABASE_ANON_KEY = isProd ? "ANON_KEY_PRODUCAO" : "ANON_KEY_DEV";
+const SUPABASE_URL = isProd
+    ? "https://chnjlswtlhmeirqyieil.supabase.co"
+    : "https://ggxvqexynkmprnowntwm.supabase.co";
+
+const SUPABASE_KEY = isProd
+    ? "sb_publishable_sYcgnLUpfSbstg491XbtUg_hitqKETG"
+    : "sb_publishable_wTB5QsHT4JjgTfoIfAcVHg_StIjxXQb";
